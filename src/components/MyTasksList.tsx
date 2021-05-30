@@ -26,21 +26,46 @@ export function MyTasksList({ tasks, onLongPress, onPress }: MyTasksListProps) {
       keyExtractor={item => String(item.id)}
       renderItem={({ item, index }) => {
         return (
-          <TouchableOpacity
-            testID={`button-${index}`}
-            activeOpacity={0.7}
-            //TODO - use onPress, onLongPress and style props
-          >
-            <View 
-              testID={`marker-${index}`}
-              //TODO - use style prop 
-            />
-            <Text 
-              //TODO - use style prop
-            >
-              {item.title}
-            </Text>
-          </TouchableOpacity>
+          <>
+            { item.done == false ? (
+              <TouchableOpacity
+                testID={`button-${index}`}
+                activeOpacity={0.7}
+                style={styles.taskButton}
+                onPress={() => onPress(item.id)}
+                onLongPress={() => onLongPress(item.id)}
+              >
+                <View
+                  testID={`marker-${index}`}
+                  style={styles.taskMarker}
+                />
+                <Text
+                  style={styles.taskText}
+                >
+                  {item.title}
+                </Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                testID={`button-${index}`}
+                activeOpacity={0.7}
+                style={styles.taskButtonDone}
+                onPress={() => onPress(item.id)}
+                onLongPress={() => onLongPress(item.id)}
+              >
+                <View
+                  testID={`marker-${index}`}
+                  style={styles.taskMarkerDone}
+                />
+                <Text
+                  style={styles.taskTextDone}
+                >
+                  {item.title}
+                </Text>
+              </TouchableOpacity>
+            )}
+
+          </>
         )
       }}
       ListHeaderComponent={<FlatListHeaderComponent />}
