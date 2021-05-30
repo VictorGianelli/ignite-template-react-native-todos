@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: StatusBar.currentHeight,
     paddingBottom: 44,
-    backgroundColor: '#273FAD',
+    backgroundColor: '#282B5A',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row'

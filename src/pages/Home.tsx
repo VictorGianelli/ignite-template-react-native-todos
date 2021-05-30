@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { View } from 'react-native';
 
 import { Header } from '../components/Header';
 import { MyTasksList } from '../components/MyTasksList';
@@ -23,13 +24,13 @@ export function Home() {
       console.log(newTaskTitle)
 
       setTasks(oldState => [...oldState, data])
-      
-    } 
+
+    }
 
   }
 
   function handleMarkTaskAsDone(id: number) {
-    
+
     setTasks(
       tasks.map(task =>
         task.id === id
@@ -37,7 +38,7 @@ export function Home() {
           : task,
       ),
     );
-    
+
   }
 
   function handleRemoveTask(id: number) {
@@ -48,7 +49,7 @@ export function Home() {
 
   console.log(tasks)
   return (
-    <>
+    <View style={{ flex: 1, backgroundColor: '#191D3A' }} >
       <Header />
 
       <TodoInput addTask={handleAddTask} />
@@ -58,6 +59,6 @@ export function Home() {
         onPress={handleMarkTaskAsDone}
         onLongPress={handleRemoveTask}
       />
-    </>
+    </View>
   )
 }
